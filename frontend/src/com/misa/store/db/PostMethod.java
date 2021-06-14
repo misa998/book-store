@@ -27,6 +27,6 @@ public class PostMethod {
 
     private String response(String payload) throws Exception {
         DataBaseProperties dbProp = new DataBaseProperties();
-        return Connect.post(dbProp.get("url") + ":" + dbProp.get("port") + dbProp.get("path"), payload);
+        return new Connect().post(dbProp.get("url") + ":" + dbProp.get("port") + dbProp.get("path"), payload);
     }
 }

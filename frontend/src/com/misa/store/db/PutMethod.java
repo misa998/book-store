@@ -14,7 +14,7 @@ public class PutMethod {
         ObjectMapper objectMapper = new ObjectMapper();
         Book bookReceived;
         DataBaseProperties dbProp = new DataBaseProperties();
-        bookReceived = objectMapper.readValue(Connect.get(dbProp.get("url") + ":" + dbProp.get("port") + dbProp.get("path") + "/" + book_id), Book.class);
+        bookReceived = objectMapper.readValue(new Connect().get(dbProp.get("url") + ":" + dbProp.get("port") + dbProp.get("path") + "/" + book_id), Book.class);
 
         return bookReceived;
     }

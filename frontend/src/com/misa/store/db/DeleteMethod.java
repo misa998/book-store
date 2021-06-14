@@ -11,7 +11,7 @@ public class DeleteMethod {
         DataBaseProperties dbProp = new DataBaseProperties();
         String response = "";
         try {
-            response = Connect.delete(dbProp.get("url") + ":" + dbProp.get("port") + dbProp.get("path") + "/" + id);
+            response = new Connect().delete(dbProp.get("url") + ":" + dbProp.get("port") + dbProp.get("path") + "/" + id);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (NullPointerException npe){

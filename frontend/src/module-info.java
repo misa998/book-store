@@ -6,6 +6,7 @@ module BookStoreClient {
     requires org.apache.httpcomponents.httpcore;
     requires commons.logging;
     requires com.fasterxml.jackson.databind;
+    requires okhttp3;
 
     opens com.misa.store.common;
     opens com.misa.store.ui;
