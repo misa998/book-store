@@ -1,7 +1,10 @@
 package com.misa.knjizara.controller;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +31,8 @@ public class KnjizaraController {
 	
 	@RequestMapping(method=RequestMethod.GET, path="/books/{id}")
 	public Book showById(@PathVariable int id) {
-		return bookService.findById(id);
+		Optional<Book> book = bookService.findById(id);
+		return book.orElse(null);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, path="/books")
@@ -51,7 +55,7 @@ public class KnjizaraController {
 		return bookService.anyBook();
 	}
 	
-	@GetMapping("/books/author/{id}")
+	@GetMapping("/books/authors/{id}")
 	public String bookAuthor(@PathVariable int id){
 		return bookService.authorOfBook(id);
 	}
@@ -62,7 +66,7 @@ public class KnjizaraController {
 	}
 	
 	@GetMapping("/authors")
-	public String allAuthors(){
+	public Set<String> allAuthors(){
 		return bookService.listOfAuthors();
 	}
 }
